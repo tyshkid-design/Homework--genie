@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homework Genie | Academic Support Made Simple</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
+</head>
+<body>
+
+<!-- Main navigation -->
+<nav class="site-nav">
+  <div class="brand">Homework<span class="brand-accent">Genie</span><span class="brand-dot"></span></div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="current">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="how-it-works.html">How It Works</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li class="mobile-auth"><a href="#" class="btn btn-outline" onclick="openModal('login'); return false;">Log In</a></li>
+    <li class="mobile-auth"><a href="#" class="btn btn-primary" onclick="openModal('student'); return false;">Student Sign Up</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="#" class="btn btn-outline" onclick="openModal('login'); return false;">Log In</a>
+    <a href="#" class="btn btn-primary" onclick="openModal('student'); return false;">Student Sign Up</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">Academic support, on your schedule</div>
+    <h1>Homework help,<br><span>made simple.</span></h1>
+    <p class="intro">Upload an assignment, get matched with someone who knows the subject, and move forward with confidence — one task at a time.</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn btn-primary" onclick="openModal('student'); return false;">Get Academic Help</a>
+      <a href="how-it-works.html" class="btn btn-outline-onlight">See how it works</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><h3>24/7</h3><p>Support</p></div>
+      <div class="stat"><h3>100%</h3><p>Online</p></div>
+      <div class="stat"><h3>1:1</h3><p>Academic support</p></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-photo-frame">
+      <img src="assets/students-hero.jpg" alt="Two students reviewing an assignment together on a laptop">
+      <div class="hero-photo-glow"></div>
+      <div class="hero-tag">Assignment submitted<small>Matched in minutes</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- Services preview -->
+<section class="section">
+  <div class="section-title">
+    <div class="eyebrow">What we help with</div>
+    <h2>Academic support when you need it</h2>
+    <p>Homework Genie connects students with support for the moments an extra hand actually helps.</p>
+  </div>
+  <div class="grid-3">
+    <div class="card reveal">
+      <div class="badge-num">01</div>
+      <h3>Assignment Support</h3>
+      <p>Guidance and support working through assignments, from a first read to a final draft.</p>
+    </div>
+    <div class="card reveal">
+      <div class="badge-num">02</div>
+      <h3>Exam Preparation</h3>
+      <p>Study guidance, practice questions and revision support ahead of a test.</p>
+    </div>
+    <div class="card reveal">
+      <div class="badge-num">03</div>
+      <h3>Proofreading</h3>
+      <p>A second pair of eyes on clarity, grammar, structure and presentation.</p>
+    </div>
+  </div>
+  <p style="margin-top:26px"><a href="services.html" class="card-link">See all services →</a></p>
+</section>
+
+<!-- Process preview -->
+<section class="section alt">
+  <div class="section-title">
+    <div class="eyebrow">The process</div>
+    <h2>Four steps, start to finish</h2>
+  </div>
+  <div class="steps-row">
+    <div class="reveal"><div class="step-number">1</div><h3>Upload</h3><p style="color:#6b6152;font-size:14px;margin-top:6px">Share your task and what you need.</p></div>
+    <div class="reveal"><div class="step-number">2</div><h3>Match</h3><p style="color:#6b6152;font-size:14px;margin-top:6px">We pair it with a suitable Tasker.</p></div>
+    <div class="reveal"><div class="step-number">3</div><h3>Work</h3><p style="color:#6b6152;font-size:14px;margin-top:6px">Get personalized support and guidance.</p></div>
+    <div class="reveal"><div class="step-number">4</div><h3>Learn</h3><p style="color:#6b6152;font-size:14px;margin-top:6px">Review the work and move forward.</p></div>
+  </div>
+  <p style="margin-top:30px"><a href="how-it-works.html" class="card-link">Walk through the full process →</a></p>
+</section>
+
+<!-- Testimonial -->
+<section class="section">
+  <div class="note-block reveal">
+    <div class="mark">&ldquo;</div>
+    <p class="quote">I uploaded my stats assignment at 11pm the night before it was due, expecting nothing. Twenty minutes later I had someone walking me through it.</p>
+    <div class="note-signature">
+      <div class="mono">JM</div>
+      <div><strong>J. Muthoni</strong><small>College student</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Ready to get started?</h2>
+  <p>Submit your academic task and get the support you need.</p>
+  <a href="#" class="btn btn-primary" onclick="openModal('student'); return false;">Get Academic Support →</a>
+</div>
+
+<!-- Student signup modal -->
+<div class="modal" id="studentModal" onclick="closeOnBackdrop(event, 'studentModal')">
+  <div class="modal-box">
+    <button class="close-modal" onclick="closeModal('studentModal')">&times;</button>
+    <h2>Create Student Account</h2>
+    <p class="subtitle">Create your account first. You can upload assignments from your dashboard after signing up.</p>
+    <form id="studentSignupForm">
+      <div class="form-grid">
+        <div class="form-group"><label>Full Name *</label><input type="text" name="name" required placeholder="Your full name"></div>
+        <div class="form-group"><label>Phone Number *</label><input type="tel" name="phone" required placeholder="e.g. +254 700 000 000"></div>
+        <div class="form-group full"><label>Gmail Address *</label><input type="email" name="email" required placeholder="yourname@gmail.com"></div>
+        <div class="form-group"><label>Password *</label><div class="password-wrap"><input id="signupPassword" type="password" name="password" minlength="6" required placeholder="At least 6 characters"><button type="button" class="password-toggle" onclick="togglePassword('signupPassword',this)" aria-label="Show password">show</button></div></div>
+        <div class="form-group"><label>Confirm Password *</label><div class="password-wrap"><input id="signupConfirmPassword" type="password" name="confirmPassword" minlength="6" required placeholder="Repeat password"><button type="button" class="password-toggle" onclick="togglePassword('signupConfirmPassword',this)" aria-label="Show password">show</button></div></div>
+        <div class="form-group full"><label>Education Level *</label><select name="education" required><option value="">Select education level</option><option>High School</option><option>College</option></select></div>
+      </div>
+      <button type="submit" class="btn btn-primary form-submit">Create Student Account</button>
+      <p class="form-note" style="text-align:center">Already have an account? <span class="auth-link" onclick="switchToLogin()">Log in</span></p>
+      <div class="success-message" id="studentSuccess"></div>
+    </form>
+  </div>
+</div>
+
+<!-- Login modal -->
+<div class="modal" id="loginModal" onclick="closeOnBackdrop(event, 'loginModal')">
+  <div class="modal-box" style="max-width:480px">
+    <button class="close-modal" onclick="closeModal('loginModal')">&times;</button>
+    <h2>Welcome Back</h2>
+    <p class="subtitle">Log in to your Homework Genie account.</p>
+    <form id="loginForm">
+      <div class="form-group" style="margin-bottom:15px"><label>Email *</label><input type="email" name="email" required placeholder="yourname@gmail.com"></div>
+      <div class="form-group"><label>Password *</label><div class="password-wrap"><input id="loginPassword" type="password" name="password" required placeholder="Your password"><button type="button" class="password-toggle" onclick="togglePassword('loginPassword',this)" aria-label="Show password">show</button></div></div>
+      <button type="submit" class="btn btn-primary form-submit">Log In</button>
+      <div class="success-message" id="loginError" style="background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3);color:#fca5a5"></div>
+      <p class="form-note" style="text-align:center">Don't have an account? <span class="auth-link" onclick="switchToStudent()">Create a Student Account</span></p>
+    </form>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div>
+    <div class="logo">Homework<span>Genie</span></div>
+    <p>Academic support made simple.</p>
+    <p>© 2026 Homework Genie. All rights reserved.</p>
+  </div>
+  <nav class="footer-nav">
+    <a href="services.html">Services</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="footer-links">
+    <a href="tel:+19176404768">+1 (917) 640-4768</a>
+    <a href="https://wa.me/19176404768">WhatsApp</a>
+    <a href="mailto:hwgenie@proton.me">hwgenie@proton.me</a>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top">&uarr;</button>
+
+<script src="script.js"></script>
+</body>
+</html>
