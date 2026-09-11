@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Homework Genie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
+</head>
+<body>
+
+<!-- Dashboard shell -->
+<div class="dashboard" id="dashboard">
+  <div class="dashboard-shell">
+    <aside class="dash-sidebar">
+      <div class="logo">Homework<span>Genie</span></div>
+      <div class="side-label">Workspace</div>
+      <div class="side-nav" id="studentSideNav">
+        <button class="active" onclick="switchDashView('studentOverview',this)"><span>Overview</span></button>
+        <button onclick="switchDashView('studentAssignments',this)"><span class="side-text">My Assignments</span></button>
+        <button onclick="openAssignment()"><span class="side-text">+ New Assignment</span></button>
+        <button onclick="switchDashView('studentProfileView',this)"><span class="side-text">My Profile</span></button>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="profile-mini"><div class="avatar" id="sideAvatar">HG</div><div class="side-text"><strong id="sideName">User</strong><small id="sideRole">Account</small></div></div>
+        <button class="btn logout-dashboard" onclick="logout()"><span class="side-text">Log Out</span></button>
+      </div>
+    </aside>
+    <div class="dash-content">
+      <header class="dash-topbar">
+        <div><h2 id="topbarTitle">Dashboard</h2><p id="topbarSubtitle">Your academic workspace</p></div>
+        <div class="topbar-user"><span id="topbarUserName" style="font-size:12px;font-weight:700;color:#4b4351"></span><div class="avatar" id="topAvatar">HG</div></div>
+      </header>
+      <main class="dash-main">
+        <section id="studentDashboard" class="hidden">
+          <!-- Overview -->
+          <div id="studentOverview" class="dash-view active">
+            <div class="dash-hero"><div><div class="eyebrow">STUDENT WORKSPACE</div><h1 id="studentWelcome">Welcome!</h1><p>Stay on top of your assignments and get the academic support you need.</p></div><button class="btn btn-primary primary-action" onclick="openAssignment()">+ Submit Assignment</button></div>
+            <div class="stat-grid">
+              <div class="dash-stat"><div class="stat-head"><span>Total Assignments</span></div><div class="number" id="studentTotalCount">0</div><small>All submissions</small></div>
+              <div class="dash-stat"><div class="stat-head"><span>Pending</span></div><div class="number" id="studentPendingCount">0</div><small>Waiting for a Tasker</small></div>
+              <div class="dash-stat"><div class="stat-head"><span>In Progress</span></div><div class="number" id="studentProgressCount">0</div><small>Currently being worked on</small></div>
+              <div class="dash-stat"><div class="stat-head"><span>Completed</span></div><div class="number" id="studentCompletedCount">0</div><small>Finished assignments</small></div>
+            </div>
+            <div class="dashboard-grid">
+              <div class="panel"><div class="panel-head"><div><h3>Recent Assignments</h3><p>Your latest submissions</p></div><button class="toolbar-chip" onclick="switchDashView('studentAssignments',null)">View all</button></div><div id="studentRecentList"></div></div>
+              <div class="panel profile-panel"><div class="profile-cover"></div><div class="profile-body"><div class="profile-large"><div class="avatar" id="studentProfileAvatar">HG</div><div><strong id="studentProfileName">Student</strong><small id="studentProfileEducation">Education</small></div></div><div class="profile-details"><div class="detail-row"><span>Email</span><span id="studentProfileEmail">—</span></div><div class="detail-row"><span>Phone</span><span id="studentProfilePhone">—</span></div><div class="detail-row"><span>Education</span><span id="studentProfileLevel">—</span></div></div><button type="button" class="btn profile-edit-btn" onclick="openProfileEdit(); return false;">Edit Profile</button></div></div>
+            </div>
+            <div class="panel" style="margin-top:20px"><div class="panel-head"><div><h3>Quick Actions</h3><p>Get things done faster</p></div></div><div class="panel-body"><div class="quick-grid"><button class="quick-card" onclick="openAssignment()"><strong>Submit an Assignment</strong><span>Upload a file and describe the help you need.</span></button><button class="quick-card" onclick="switchDashView('studentAssignments',null)"><strong>Track My Assignments</strong><span>See pending, active and completed work.</span></button></div></div></div>
+          </div>
+          <!-- Assignments -->
+          <div id="studentAssignments" class="dash-view"><div class="dash-hero"><div><div class="eyebrow">MY WORK</div><h1>My Assignments</h1><p>Track everything you have submitted to Homework Genie.</p></div><button class="btn btn-primary primary-action" onclick="openAssignment()">+ New Assignment</button></div><div class="panel"><div class="panel-head"><div><h3>Assignment History</h3><p>Newest submissions appear first</p></div></div><div id="assignmentList"></div></div></div>
+          <!-- Profile -->
+          <div id="studentProfileView" class="dash-view"><div class="dash-hero"><div><div class="eyebrow">ACCOUNT</div><h1>My Profile</h1><p>View your account information.</p></div></div><div class="panel profile-panel"><div class="profile-cover"></div><div class="profile-body"><div class="profile-large"><div class="avatar" id="studentProfileAvatar2">HG</div><div><strong id="studentProfileName2">Student</strong><small id="studentProfileEducation2">Education</small></div></div><div class="profile-details"><div class="detail-row"><span>Full name</span><span id="studentProfileNameDetail">—</span></div><div class="detail-row"><span>Email</span><span id="studentProfileEmail2">—</span></div><div class="detail-row"><span>Phone</span><span id="studentProfilePhone2">—</span></div><div class="detail-row"><span>Education level</span><span id="studentProfileLevel2">—</span></div></div><button type="button" class="btn profile-edit-btn" onclick="openProfileEdit(); return false;">Edit Profile</button></div></div></div>
+        </section>
+      </main>
+    </div>
+  </div>
+</div>
+
+<!-- Profile edit modal -->
+<div class="modal" id="profileEditModal" style="z-index:10001;" onclick="closeOnBackdrop(event, 'profileEditModal')">
+  <div class="modal-box" style="max-width:560px">
+    <button class="close-modal" onclick="closeModal('profileEditModal')">&times;</button>
+    <h2>Edit Your Profile</h2>
+    <p class="subtitle">Update the information connected to your Homework Genie account.</p>
+    <form id="profileEditForm">
+      <div class="form-grid">
+        <div class="form-group full"><label>Full Name *</label><input type="text" id="editName" name="name" required></div>
+        <div class="form-group"><label>Phone Number *</label><input type="tel" id="editPhone" name="phone" required></div>
+        <div class="form-group"><label>Education Level *</label><select id="editEducation" name="education" required><option>High School</option><option>College</option></select></div>
+        <div class="form-group full"><label>Gmail Address</label><input type="email" id="editEmail" name="email" disabled></div>
+      </div>
+      <button type="submit" class="btn btn-primary form-submit">Save Changes</button>
+      <div class="success-message" id="profileEditSuccess"></div>
+    </form>
+  </div>
+</div>
+
+<!-- Assignment modal -->
+<div class="modal" id="assignmentModal" onclick="closeOnBackdrop(event, 'assignmentModal')">
+  <div class="modal-box">
+    <button class="close-modal" onclick="closeModal('assignmentModal')">&times;</button>
+    <h2>Submit an Assignment</h2><p class="subtitle">Upload your task after creating your student account.</p>
+    <form id="assignmentForm">
+      <div class="form-group" style="margin-bottom:15px"><label>Assignment File *</label><input type="file" id="assignmentFile" required accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.zip"></div>
+      <div class="form-note" style="margin:-5px 0 15px">Maximum recommended size: 20 MB. Your file is stored locally until the backend is connected.</div>
+      <div class="form-group"><label>Assignment Details *</label><textarea id="assignmentDetails" rows="5" required placeholder="Subject, instructions, deadline and the kind of support you need..."></textarea></div>
+      <button type="submit" class="btn btn-primary form-submit" id="assignmentSubmitBtn">Submit Assignment</button>
+      <div class="success-message" id="assignmentSuccess"></div>
+    </form>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

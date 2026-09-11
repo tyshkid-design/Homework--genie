@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Homework Genie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
+</head>
+<body>
+
+<!-- Main navigation -->
+<nav class="site-nav">
+  <div class="brand">Homework<span class="brand-accent">Genie</span><span class="brand-dot"></span></div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="how-it-works.html">How It Works</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="current">Contact</a></li>
+    <li class="mobile-auth"><a href="index.html?auth=login" class="btn btn-outline">Log In</a></li>
+    <li class="mobile-auth"><a href="index.html?auth=student" class="btn btn-primary">Student Sign Up</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="index.html?auth=login" class="btn btn-outline">Log In</a>
+    <a href="index.html?auth=student" class="btn btn-primary">Student Sign Up</a>
+  </div>
+</nav>
+
+<!-- Page header -->
+<section class="page-hero">
+  <div class="crumb">Get in touch</div>
+  <h1>Questions before you sign up? Reach us directly.</h1>
+  <p class="lead">For account or assignment support, the fastest route is usually your dashboard. For everything else, here's how to find us.</p>
+</section>
+
+<!-- Contact cards -->
+<section class="section">
+  <div class="contact-grid">
+    <div>
+      <div class="contact-card reveal">
+        <div class="cc-icon">P</div>
+        <div><strong>Phone</strong><a href="tel:+19176404768">+1 (917) 640-4768</a></div>
+      </div>
+      <div class="contact-card reveal">
+        <div class="cc-icon">W</div>
+        <div><strong>WhatsApp</strong><a href="https://wa.me/19176404768">wa.me/19176404768</a></div>
+      </div>
+      <div class="contact-card reveal">
+        <div class="cc-icon">E</div>
+        <div><strong>Email</strong><a href="mailto:hwgenie@proton.me">hwgenie@proton.me</a></div>
+      </div>
+      <div class="contact-card reveal">
+        <div class="cc-icon">H</div>
+        <div><strong>Support hours</strong><span>Online around the clock — messages outside peak hours are answered the same day.</span></div>
+      </div>
+    </div>
+
+    <div class="form-panel reveal">
+      <h3 style="margin-bottom:6px">Send a message</h3>
+      <p style="font-size:13px;color:#6b6152;margin-bottom:22px">This opens your email client with the message filled in — nothing is stored on our end.</p>
+      <form id="contactForm">
+        <div class="form-group"><label>Your name</label><input type="text" id="cName" required placeholder="Full name"></div>
+        <div class="form-group"><label>Your email</label><input type="email" id="cEmail" required placeholder="you@example.com"></div>
+        <div class="form-group"><label>Message</label><textarea id="cMessage" rows="5" required placeholder="What can we help with?"></textarea></div>
+        <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Already have a task to submit?</h2>
+  <p>Skip the message — upload it straight to your dashboard.</p>
+  <a href="index.html?auth=student" class="btn btn-primary">Get Academic Support →</a>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div>
+    <div class="logo">Homework<span>Genie</span></div>
+    <p>Academic support made simple.</p>
+    <p>© 2026 Homework Genie. All rights reserved.</p>
+  </div>
+  <nav class="footer-nav">
+    <a href="services.html">Services</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="footer-links">
+    <a href="tel:+19176404768">+1 (917) 640-4768</a>
+    <a href="https://wa.me/19176404768">WhatsApp</a>
+    <a href="mailto:hwgenie@proton.me">hwgenie@proton.me</a>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top">&uarr;</button>
+<script src="script.js"></script>
+<script>
+  // Contact form handler - opens user's email client with prefilled message
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('cName').value;
+    var email = document.getElementById('cEmail').value;
+    var message = document.getElementById('cMessage').value;
+    var subject = encodeURIComponent('Message from ' + name);
+    var body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+    window.location.href = 'mailto:hwgenie@proton.me?subject=' + subject + '&body=' + body;
+  });
+</script>
+</body>
+</html>
